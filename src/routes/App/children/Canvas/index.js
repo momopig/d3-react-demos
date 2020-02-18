@@ -1,17 +1,12 @@
 import React from 'react'
-import { HashRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import WhenAndHow from './children/WhenAndHow'
-const Canvas =() => {
+const Canvas =(props) => {
+  const { match } = props
   return (
-    <HashRouter>
-      <Switch>
-        <Route>
-          <Route path='/whenAndHow' component={WhenAndHow}/>
-          <Route path='/' component={WhenAndHow}/>
-        </Route>
-      </Switch>
-
-    </HashRouter>
+    <Switch>
+      <Route path={[`${match.url}/whenAndHow`, `${match.url}/`]} component={WhenAndHow}/>
+    </Switch>
   )
 }
 export default Canvas
